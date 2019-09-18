@@ -1,14 +1,14 @@
 public class ball{
-  float xpos;
-  float ypos;
-  float xvel;
-  float yvel;
-  float xacc;
-  float yacc;
-  float accelerationConstant = 1;
-  float mass = 15;
+  double xpos;
+  double ypos;
+  double xvel = 1;
+  double yvel;
+  double xacc;
+  double yacc;
+  double accelerationConstant = 1;
+  double mass = 1;
   
-  public ball(float x, float y){
+  public ball(double x, double y){
     xpos = x;
     ypos = y;
   }
@@ -16,7 +16,7 @@ public class ball{
   void drawBall(){
     fill(0,0,255);
     strokeWeight(0);
-    ellipse(xpos,ypos,30,30);
+    ellipse((float)xpos,(float)ypos,30,30);
   }
   
   void calculateForces(){
@@ -30,9 +30,9 @@ public class ball{
   }
   
   void updateVel(){
-    float theta = atan(fx(xpos,ypos));
-    xacc = (accelerationConstant * cos(theta)) / mass;
-    yacc = (accelerationConstant * sin(theta)) / mass ;
+    double theta = atan((float)fx(xpos + xShift,ypos + yShift));
+    xacc = (accelerationConstant * cos((float)theta)) / mass;
+    yacc = (accelerationConstant * sin((float)theta)) / mass ;
     xvel = xvel + xacc;
     yvel = yvel + yacc;
   }
