@@ -1,8 +1,8 @@
 public class ball{
   double xpos;
   double ypos;
-  double xvel = 1;
-  double yvel;
+  double xvel;
+  double yvel = 10;
   double xacc;
   double yacc;
   double accelerationConstant = 1;

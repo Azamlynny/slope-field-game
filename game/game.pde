@@ -12,10 +12,12 @@ double slopeLength = 10;
 float spacing = 45;
 int xShift;
 int yShift;
+boolean play;
 
 ball ball = new ball(0,0);
 
 void setup(){
+  play = false;
   xSlopes = 44;
   ySlopes = 24;
   xShift = -xSlopes/2 + 1;
@@ -35,7 +37,9 @@ void draw(){
   scale(1, -1);
   translate(screenWidth/2,-screenHeight/2);
   
-  ball.calculateForces();
+  if(play){
+    ball.calculateForces();
+  }
   ball.drawBall();
 }
 
@@ -77,4 +81,10 @@ void drawGrid(){
   line(screenWidth/2,0,screenWidth/2,screenHeight);
   line(0,screenHeight/2,screenWidth,screenHeight/2);
   stroke(0);
+}
+
+void keyPressed() {
+  if (key == 32) {
+    play = true; 
+  }
 }
