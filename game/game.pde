@@ -35,7 +35,7 @@ void draw(){
   drawGrid();
   drawSlopeField();
   scale(1, -1);
-  translate(screenWidth/2,-screenHeight/2);
+  translate(screenWidth/2, -screenHeight/2);
   
   if(play){
     ball.calculateForces();
@@ -44,7 +44,7 @@ void draw(){
 }
 
 double fx(double x, double y){
-  return (double) (x-y);
+  return (double) (x);
 }
 
 void drawSlopeField(){
@@ -58,14 +58,14 @@ void drawSlopeField(){
 }
 
 void findSlopeField(){
-  for(int x = 0; x < xSlopes; x++){
-    for(int y = 0; y < ySlopes; y++){
+  for(int y = 0; y < ySlopes; y++){
+    for(int x = 0; x < xSlopes; x++){
        slopeField[x][y] = fx(x + xShift,y + yShift);
        sFtheta[x][y] = atan((float)slopeField[x][y]);
        sFx1[x][y] = (float)(((x*spacing) + spacing) - (slopeLength * cos((float)sFtheta[x][y])));
        sFx2[x][y] = (float)(((x*spacing) + spacing) + (slopeLength * cos((float)sFtheta[x][y])));
-       sFy2[x][y] = (float)(((y*spacing) + spacing) - (slopeLength * sin((float)sFtheta[x][y])));
-       sFy1[x][y] = (float)(((y*spacing) + spacing) + (slopeLength * sin((float)sFtheta[x][y])));
+       sFy1[x][y] = (float)(((y*spacing) + spacing) - (slopeLength * sin((float)sFtheta[x][y])));
+       sFy2[x][y] = (float)(((y*spacing) + spacing) + (slopeLength * sin((float)sFtheta[x][y])));
     }
   }
 }
